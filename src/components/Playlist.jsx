@@ -9,15 +9,18 @@ import { playlistSelector } from "../redux/selectors";
 import logo from "../assets/logo.svg";
 import avatar from "../assets/avatar.png";
 
-const Playlist = () => {
+const Playlist = ({ closeDrawer }) => {
   const { error, loading, data } = useQuery(GET_PLAYLISTS);
   const { currentPlaylist } = useSelector(playlistSelector);
   const dispatch = useDispatch();
+
+  const isMobile = window.innerWidth < 1024;
 
   const handlePlaylistChange = (e) => {
     const { playlist, playlistid } = e.currentTarget.dataset;
     dispatch(setCurrentPlaylist({ playlist, playlistid }));
     dispatch(setSongSearch(""));
+    if (isMobile) closeDrawer()
   };
 
   if (error) return <>error</>;
@@ -31,8 +34,8 @@ const Playlist = () => {
             <p
               key={id}
               className={`text-white lg:mt-4 mt-10 text-[20px] cursor-pointer ${currentPlaylist.playlist === title
-                  ? "opacity-100"
-                  : "opacity-40"
+                ? "opacity-100"
+                : "opacity-40"
                 }`}
               data-playlist={title}
               data-playlistid={id}

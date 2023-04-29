@@ -42,7 +42,7 @@ const Search = () => {
       <input
         type="text"
         placeholder="Search Song, Artist"
-        className="p-[10px] rounded-[8px] w-full bg-[#482a2419] h-[48px] text-white text-[18px] !outline-none"
+        className="p-[10px] pr-12 rounded-[8px] w-full bg-[#482a2419] h-[48px] text-white text-[18px] !outline-none"
         onChange={optimizedFn}
         ref={ref}
         onKeyPress={e => {

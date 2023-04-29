@@ -10,7 +10,6 @@ const initialState = {
     url: "",
   },
   allSongs: [],
-  songPaused: true,
   search: "",
 };
 
@@ -33,17 +32,9 @@ const songsSlice = createSlice({
     setSongSearch(state, { payload }) {
       state.search = payload;
     },
-    toggleSongControl(state, { payload }) {
-      state.songPaused = payload;
-    },
   },
 });
 
-export const {
-  setCurrentSong,
-  setPreviousSong,
-  setAllSong,
-  toggleSongControl,
-  setSongSearch,
-} = songsSlice.actions;
+export const { setCurrentSong, setPreviousSong, setAllSong, setSongSearch } =
+  songsSlice.actions;
 export default songsSlice.reducer;
